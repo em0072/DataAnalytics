@@ -7,8 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		751661C72853CF8E004E044F /* DataAiAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751661C62853CF8E004E044F /* DataAiAnalytics.swift */; };
+		751661C72853CF8E004E044F /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751661C62853CF8E004E044F /* NetworkService.swift */; };
+		754E062F2858AA6B00B29639 /* AnalyticsEventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754E062E2858AA6B00B29639 /* AnalyticsEventService.swift */; };
+		754E06312858AA7C00B29639 /* AnalyticsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754E06302858AA7C00B29639 /* AnalyticsController.swift */; };
+		754E06332858AA8E00B29639 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754E06322858AA8E00B29639 /* Analytics.swift */; };
+		7583D5A02858AC580037746C /* AppEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7583D59B2858AC580037746C /* AppEvent.swift */; };
+		7583D5A12858AC580037746C /* AppEventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7583D59C2858AC580037746C /* AppEventType.swift */; };
+		7583D5A22858AC580037746C /* AnalyticsBatchUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7583D59D2858AC580037746C /* AnalyticsBatchUpdate.swift */; };
+		7583D5A32858AC580037746C /* LifeCycleEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7583D59E2858AC580037746C /* LifeCycleEvent.swift */; };
+		7583D5A42858AC580037746C /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7583D59F2858AC580037746C /* NetworkError.swift */; };
+		7583D5AA2858ACAB0037746C /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7583D5A92858ACAB0037746C /* Network.swift */; };
+		7583D5B22858B2870037746C /* DataAiAnalyticsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7583D5B12858B2870037746C /* DataAiAnalyticsTests.swift */; };
+		7583D5B32858B2870037746C /* libDataAiAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 751661C32853CF8E004E044F /* libDataAiAnalytics.a */; };
+		7583D5BA2858BE900037746C /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7583D5B92858BE900037746C /* MockNetworkService.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7583D5B42858B2870037746C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 751661BB2853CF8E004E044F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 751661C22853CF8E004E044F;
+			remoteInfo = DataAiAnalytics;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		751661C12853CF8E004E044F /* CopyFiles */ = {
@@ -24,7 +46,19 @@
 
 /* Begin PBXFileReference section */
 		751661C32853CF8E004E044F /* libDataAiAnalytics.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDataAiAnalytics.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		751661C62853CF8E004E044F /* DataAiAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAiAnalytics.swift; sourceTree = "<group>"; };
+		751661C62853CF8E004E044F /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		754E062E2858AA6B00B29639 /* AnalyticsEventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEventService.swift; sourceTree = "<group>"; };
+		754E06302858AA7C00B29639 /* AnalyticsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsController.swift; sourceTree = "<group>"; };
+		754E06322858AA8E00B29639 /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
+		7583D59B2858AC580037746C /* AppEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppEvent.swift; sourceTree = "<group>"; };
+		7583D59C2858AC580037746C /* AppEventType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppEventType.swift; sourceTree = "<group>"; };
+		7583D59D2858AC580037746C /* AnalyticsBatchUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsBatchUpdate.swift; sourceTree = "<group>"; };
+		7583D59E2858AC580037746C /* LifeCycleEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifeCycleEvent.swift; sourceTree = "<group>"; };
+		7583D59F2858AC580037746C /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		7583D5A92858ACAB0037746C /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		7583D5AF2858B2870037746C /* DataAiAnalyticsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataAiAnalyticsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7583D5B12858B2870037746C /* DataAiAnalyticsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAiAnalyticsTests.swift; sourceTree = "<group>"; };
+		7583D5B92858BE900037746C /* MockNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +69,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7583D5AC2858B2870037746C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7583D5B32858B2870037746C /* libDataAiAnalytics.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -42,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				751661C52853CF8E004E044F /* DataAiAnalytics */,
+				7583D5B02858B2870037746C /* DataAiAnalyticsTests */,
 				751661C42853CF8E004E044F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				751661C32853CF8E004E044F /* libDataAiAnalytics.a */,
+				7583D5AF2858B2870037746C /* DataAiAnalyticsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -57,9 +101,43 @@
 		751661C52853CF8E004E044F /* DataAiAnalytics */ = {
 			isa = PBXGroup;
 			children = (
-				751661C62853CF8E004E044F /* DataAiAnalytics.swift */,
+				754E06302858AA7C00B29639 /* AnalyticsController.swift */,
+				751661C62853CF8E004E044F /* NetworkService.swift */,
+				754E062E2858AA6B00B29639 /* AnalyticsEventService.swift */,
+				754E06322858AA8E00B29639 /* Analytics.swift */,
+				754E06342858AAA200B29639 /* Models */,
+				7583D5A82858AC880037746C /* Constants */,
 			);
 			path = DataAiAnalytics;
+			sourceTree = "<group>";
+		};
+		754E06342858AAA200B29639 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7583D59D2858AC580037746C /* AnalyticsBatchUpdate.swift */,
+				7583D59B2858AC580037746C /* AppEvent.swift */,
+				7583D59C2858AC580037746C /* AppEventType.swift */,
+				7583D59E2858AC580037746C /* LifeCycleEvent.swift */,
+				7583D59F2858AC580037746C /* NetworkError.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7583D5A82858AC880037746C /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				7583D5A92858ACAB0037746C /* Network.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		7583D5B02858B2870037746C /* DataAiAnalyticsTests */ = {
+			isa = PBXGroup;
+			children = (
+				7583D5B12858B2870037746C /* DataAiAnalyticsTests.swift */,
+				7583D5B92858BE900037746C /* MockNetworkService.swift */,
+			);
+			path = DataAiAnalyticsTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -82,6 +160,24 @@
 			productReference = 751661C32853CF8E004E044F /* libDataAiAnalytics.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		7583D5AE2858B2870037746C /* DataAiAnalyticsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7583D5B62858B2870037746C /* Build configuration list for PBXNativeTarget "DataAiAnalyticsTests" */;
+			buildPhases = (
+				7583D5AB2858B2870037746C /* Sources */,
+				7583D5AC2858B2870037746C /* Frameworks */,
+				7583D5AD2858B2870037746C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7583D5B52858B2870037746C /* PBXTargetDependency */,
+			);
+			name = DataAiAnalyticsTests;
+			productName = DataAiAnalyticsTests;
+			productReference = 7583D5AF2858B2870037746C /* DataAiAnalyticsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -93,6 +189,9 @@
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					751661C22853CF8E004E044F = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					7583D5AE2858B2870037746C = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
 				};
@@ -111,20 +210,57 @@
 			projectRoot = "";
 			targets = (
 				751661C22853CF8E004E044F /* DataAiAnalytics */,
+				7583D5AE2858B2870037746C /* DataAiAnalyticsTests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7583D5AD2858B2870037746C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		751661BF2853CF8E004E044F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				751661C72853CF8E004E044F /* DataAiAnalytics.swift in Sources */,
+				7583D5A12858AC580037746C /* AppEventType.swift in Sources */,
+				7583D5A32858AC580037746C /* LifeCycleEvent.swift in Sources */,
+				7583D5A22858AC580037746C /* AnalyticsBatchUpdate.swift in Sources */,
+				754E06312858AA7C00B29639 /* AnalyticsController.swift in Sources */,
+				7583D5AA2858ACAB0037746C /* Network.swift in Sources */,
+				751661C72853CF8E004E044F /* NetworkService.swift in Sources */,
+				754E06332858AA8E00B29639 /* Analytics.swift in Sources */,
+				7583D5A42858AC580037746C /* NetworkError.swift in Sources */,
+				7583D5A02858AC580037746C /* AppEvent.swift in Sources */,
+				754E062F2858AA6B00B29639 /* AnalyticsEventService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7583D5AB2858B2870037746C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7583D5BA2858BE900037746C /* MockNetworkService.swift in Sources */,
+				7583D5B22858B2870037746C /* DataAiAnalyticsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7583D5B52858B2870037746C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 751661C22853CF8E004E044F /* DataAiAnalytics */;
+			targetProxy = 7583D5B42858B2870037746C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		751661C82853CF8E004E044F /* Debug */ = {
@@ -178,7 +314,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -233,7 +369,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -269,6 +405,40 @@
 			};
 			name = Release;
 		};
+		7583D5B72858B2870037746C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 65952893XA;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.mitko.DataAiAnalyticsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7583D5B82858B2870037746C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 65952893XA;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.mitko.DataAiAnalyticsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -286,6 +456,15 @@
 			buildConfigurations = (
 				751661CB2853CF8E004E044F /* Debug */,
 				751661CC2853CF8E004E044F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7583D5B62858B2870037746C /* Build configuration list for PBXNativeTarget "DataAiAnalyticsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7583D5B72858B2870037746C /* Debug */,
+				7583D5B82858B2870037746C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
