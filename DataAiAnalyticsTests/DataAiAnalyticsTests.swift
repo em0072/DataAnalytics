@@ -69,7 +69,6 @@ class DataAiAnalyticsTests: XCTestCase {
         analyticsController.uploadAnalyticsIfNeeded()
         Task {
             let eventsList = await analyticsController.getListOfAllEvents()
-            print(eventsList)
             XCTAssert(eventsList.count == 0)
         }
     }

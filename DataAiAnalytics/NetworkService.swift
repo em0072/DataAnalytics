@@ -21,7 +21,6 @@ internal class NetworkService: Networkable {
         } else {
             let json = try JSONSerialization.jsonObject(with: data) as? [String : Any]
             print("Request body:\n \(json ?? [:])")
-            print("Analytics succesfully sent!! 🎉🎉🎉")
         }
     }
     

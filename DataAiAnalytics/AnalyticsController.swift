@@ -43,10 +43,8 @@ internal class AnalyticsController {
     @objc internal func uploadAnalyticsIfNeeded()  {
             Task {
                 let events = await self.analyticsEventsService.getLatestEvents()
-                if events.isEmpty {
-                    print("No Current Events to send!")
-                } else {
-                    print("Sending Analytics Events!")
+                if !events.isEmpty {
+                    print("Sending Analytics Events:")
                     sendAnalytics(events: events)
                 }
             }
@@ -65,7 +63,6 @@ internal class AnalyticsController {
                 try networkService.sendRequest(data)
             } catch (let error) {
                     print("Error: \(error.localizedDescription)")
-                    print("Gonna cache those events and try again later")
                     await analyticsEventsService.cacheEvents(events)
             }
         }
