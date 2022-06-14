@@ -19,6 +19,7 @@ internal class AnalyticsController {
     private let appBundleId: String
     private let systemVersion: String
     private var currentAppState: String = "unknown"
+    private var bgTask: UIBackgroundTaskIdentifier = UIBackgroundTaskIdentifier(rawValue: 0)
     
     private var cachedEvents: [AppEvent] = []
     
@@ -36,7 +37,11 @@ internal class AnalyticsController {
     
     private func startTimer() {
         guard uploadTimer == nil else { return }
+            bgTask = UIApplication.shared.beginBackgroundTask(expirationHandler: {
+                UIApplication.shared.endBackgroundTask(self.bgTask)
+            })
         uploadTimer = Timer.scheduledTimer(timeInterval: NetworkSettings.eventsBundlingDuration, target: self, selector: #selector(uploadAnalyticsIfNeeded), userInfo: nil, repeats: true)
+        RunLoop.current.add(uploadTimer!, forMode: RunLoop.Mode.default)
     }
     
     
@@ -46,6 +51,9 @@ internal class AnalyticsController {
                 if !events.isEmpty {
                     print("Sending Analytics Events:")
                     sendAnalytics(events: events)
+                    DispatchQueue.main.async {
+                        UIApplication.shared.endBackgroundTask(self.bgTask)
+                    }
                 }
             }
     }
@@ -60,7 +68,7 @@ internal class AnalyticsController {
                                                        systemVersion: self.systemVersion,
                                                        events: events)
                 let data = try JSONEncoder().encode(batchUpdate)
-                try networkService.sendRequest(data)
+                try await networkService.sendRequest(data)
             } catch (let error) {
                     print("Error: \(error.localizedDescription)")
                     await analyticsEventsService.cacheEvents(events)

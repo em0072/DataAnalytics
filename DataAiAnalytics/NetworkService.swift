@@ -9,12 +9,12 @@ import Foundation
 import Combine
 
 protocol Networkable {
-    func sendRequest(_ data: Data) throws
+    func sendRequest(_ data: Data) async throws
 }
 
 internal class NetworkService: Networkable {
         
-    internal func sendRequest(_ data: Data) throws {
+    internal func sendRequest(_ data: Data) async throws {
         let number = Int.random(in: 665..<667)
         if number == 666 {
             throw NetworkError.networkUnavailable

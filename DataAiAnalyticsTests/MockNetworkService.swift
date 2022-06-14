@@ -12,7 +12,7 @@ internal class MockNetworkService: Networkable {
     
     internal var success: Bool = true
     
-    func sendRequest(_ data: Data) throws {
+    func sendRequest(_ data: Data) async throws {
         if !success {
             throw NetworkError.networkUnavailable
         }

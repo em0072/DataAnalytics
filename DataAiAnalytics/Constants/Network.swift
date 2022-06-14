@@ -16,5 +16,5 @@ struct RequestConst {
 }
 
 struct NetworkSettings {
-    static let eventsBundlingDuration: TimeInterval = 10 * 60 // 10 minutes
+    static let eventsBundlingDuration: TimeInterval = 10// * 60 // 10 minutes
 }
