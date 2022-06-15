@@ -14,8 +14,6 @@ public struct AppEvent: Codable {
     let type: AppEventType
     let name: String
     let date: TimeInterval
-    
-    
 }
 
 extension AppEvent {

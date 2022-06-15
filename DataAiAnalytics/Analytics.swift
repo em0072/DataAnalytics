@@ -7,12 +7,12 @@
 
 import Foundation
 import UIKit
-import BackgroundTasks
 
  
 
 public class Analytics {
     
+        
     /// This function turns  automatic app state transition tracking on.
     ///
     public static func startTrackingLifeCycleEvent() {

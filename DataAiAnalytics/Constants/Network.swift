@@ -8,13 +8,14 @@
 import Foundation
 
 
-struct RequestConst {
+struct NetworkConst {
     static let requestDate = "request_date"
     static let bundleID = "bundle_id"
     static let systemVersion = "system_version"
     static let appState = "app_state"
+    static let BGTaskIdentifier = "me.mitko.sendAnalytics"
 }
 
 struct NetworkSettings {
-    static let eventsBundlingDuration: TimeInterval = 10// * 60 // 10 minutes
+    static let eventsBundlingDuration: TimeInterval = 10 * 60 // 10 minutes
 }

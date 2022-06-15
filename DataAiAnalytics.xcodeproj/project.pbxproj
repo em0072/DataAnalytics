@@ -20,6 +20,7 @@
 		7583D5B22858B2870037746C /* DataAiAnalyticsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7583D5B12858B2870037746C /* DataAiAnalyticsTests.swift */; };
 		7583D5B32858B2870037746C /* libDataAiAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 751661C32853CF8E004E044F /* libDataAiAnalytics.a */; };
 		7583D5BA2858BE900037746C /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7583D5B92858BE900037746C /* MockNetworkService.swift */; };
+		7583D5DA2859C4460037746C /* AnalyticsInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7583D5D92859C4460037746C /* AnalyticsInfo.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		7583D5AF2858B2870037746C /* DataAiAnalyticsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataAiAnalyticsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7583D5B12858B2870037746C /* DataAiAnalyticsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAiAnalyticsTests.swift; sourceTree = "<group>"; };
 		7583D5B92858BE900037746C /* MockNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
+		7583D5D92859C4460037746C /* AnalyticsInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AnalyticsInfo.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 		751661C52853CF8E004E044F /* DataAiAnalytics */ = {
 			isa = PBXGroup;
 			children = (
+				7583D5D92859C4460037746C /* AnalyticsInfo.plist */,
 				754E06302858AA7C00B29639 /* AnalyticsController.swift */,
 				751661C62853CF8E004E044F /* NetworkService.swift */,
 				754E062E2858AA6B00B29639 /* AnalyticsEventService.swift */,
@@ -220,6 +223,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7583D5DA2859C4460037746C /* AnalyticsInfo.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,6 +388,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 65952893XA;
+				INFOPLIST_FILE = DataAiAnalytics/AnalyticsInfo.plist;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -397,6 +402,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 65952893XA;
+				INFOPLIST_FILE = DataAiAnalytics/AnalyticsInfo.plist;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

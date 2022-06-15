@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import BackgroundTasks
 
 internal class AnalyticsController {
     
@@ -20,9 +21,7 @@ internal class AnalyticsController {
     private let systemVersion: String
     private var currentAppState: String = "unknown"
     private var bgTask: UIBackgroundTaskIdentifier = UIBackgroundTaskIdentifier(rawValue: 0)
-    
-    private var cachedEvents: [AppEvent] = []
-    
+        
     private var autoStateTrackEnabled: Bool = false
 
     private var uploadTimer: Timer?
@@ -33,50 +32,73 @@ internal class AnalyticsController {
         self.appBundleId = Bundle.main.bundleIdentifier ?? ""
         self.systemVersion = UIDevice.current.systemVersion
         self.configureAppStateTracking()
+        configureBackgroundAnalyticsRequests()
+    }
+    
+    private func configureBackgroundAnalyticsRequests() {
+        BGTaskScheduler.shared.register(forTaskWithIdentifier: NetworkConst.BGTaskIdentifier, using: nil) { task in
+            if let bgAppRefreshTaks = task as? BGAppRefreshTask {
+                self.handleBGTask(bgAppRefreshTaks)
+            }
+        }
+    }
+
+    private func handleBGTask(_ task: BGAppRefreshTask) {
+        scheduleAnalyticsRefresh()
+        Task {
+            await uploadAnalyticsIfNeeded()
+            task.setTaskCompleted(success: true)
+        }
+    }
+    
+    private func scheduleAnalyticsRefresh() {
+        let request = BGAppRefreshTaskRequest(identifier: NetworkConst.BGTaskIdentifier)
+        request.earliestBeginDate = Date(timeIntervalSinceNow: NetworkSettings.eventsBundlingDuration)
+        do {
+            try BGTaskScheduler.shared.submit(request)
+        } catch (let error) {
+            print("Could not schedule an app refresh: \(error)")
+        }
     }
     
     private func startTimer() {
         guard uploadTimer == nil else { return }
-            bgTask = UIApplication.shared.beginBackgroundTask(expirationHandler: {
-                UIApplication.shared.endBackgroundTask(self.bgTask)
-            })
-        uploadTimer = Timer.scheduledTimer(timeInterval: NetworkSettings.eventsBundlingDuration, target: self, selector: #selector(uploadAnalyticsIfNeeded), userInfo: nil, repeats: true)
-        RunLoop.current.add(uploadTimer!, forMode: RunLoop.Mode.default)
+        uploadTimer = Timer.scheduledTimer(timeInterval: NetworkSettings.eventsBundlingDuration, target: self, selector: #selector(triggerAnalyticsUpdate), userInfo: nil, repeats: true)
     }
     
+    @objc private func triggerAnalyticsUpdate() {
+        Task {
+            await uploadAnalyticsIfNeeded()
+        }
+    }
     
-    @objc internal func uploadAnalyticsIfNeeded()  {
-            Task {
+    ///Function to immidiatley upload latest analytics events
+    internal func uploadAnalyticsIfNeeded() async {
                 let events = await self.analyticsEventsService.getLatestEvents()
                 if !events.isEmpty {
                     print("Sending Analytics Events:")
-                    sendAnalytics(events: events)
-                    DispatchQueue.main.async {
-                        UIApplication.shared.endBackgroundTask(self.bgTask)
-                    }
+                    await sendAnalytics(events: events)
                 }
-            }
     }
     
-    private func sendAnalytics(events: [AppEvent]) {
+    private func sendAnalytics(events: [AppEvent]) async {
         checkAppState()
-        Task {
+        let batchUpdate = AnalyticsBatchUpdate(requestDate: Date().timeIntervalSince1970,
+                                               bundleID: self.appBundleId,
+                                               appState: self.currentAppState,
+                                               systemVersion: self.systemVersion,
+                                               events: events)
             do {
-                let batchUpdate = AnalyticsBatchUpdate(requestDate: Date().timeIntervalSince1970,
-                                                       bundleID: self.appBundleId,
-                                                       appState: self.currentAppState,
-                                                       systemVersion: self.systemVersion,
-                                                       events: events)
                 let data = try JSONEncoder().encode(batchUpdate)
                 try await networkService.sendRequest(data)
             } catch (let error) {
                     print("Error: \(error.localizedDescription)")
                     await analyticsEventsService.cacheEvents(events)
             }
-        }
     }
-    
+        
     private func checkAppState() {
+        //UIApplications calls should happen on the main tread
         DispatchQueue.main.async {
             switch UIApplication.shared.applicationState {
             case .active:
@@ -91,7 +113,6 @@ internal class AnalyticsController {
         }
     }
             
-    //MARK: Functions for tracking state changes
     private func configureAppStateTracking() {
         NotificationCenter.default.addObserver(self, selector: #selector(appDidEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(appDidEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
@@ -101,6 +122,7 @@ internal class AnalyticsController {
         if autoStateTrackEnabled {
             addNewAppEvent(.stateTransition, eventName: "Transition to background")
         }
+        scheduleAnalyticsRefresh()
     }
     
     @objc private func appDidEnterForeground() {
@@ -108,7 +130,7 @@ internal class AnalyticsController {
             addNewAppEvent(.stateTransition, eventName: "Transition to foreground")
         }
     }
-    
+        
     ///Function to control automatic app state tracking
     internal func setAutoStateTrack(on: Bool) {
         autoStateTrackEnabled = on

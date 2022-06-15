@@ -55,21 +55,17 @@ class DataAiAnalyticsTests: XCTestCase {
         XCTAssert(hasCustomEvent && hasButtonEvent && hasStateTransitionEvent && hasViewOpenEvent)
     }
     
-    func testCachingMecanism() {
-        networkService.success = false
-        analyticsController.uploadAnalyticsIfNeeded()
-        Task {
+    func testCachingMecanism() async {
+            networkService.success = false
+            await analyticsController.uploadAnalyticsIfNeeded()
             let eventsList = await analyticsController.getListOfAllEvents()
             XCTAssert(eventsList.count == 4)
-        }
     }
     
-    func testSendingAnalytics() {
+    func testSendingAnalytics() async {
         networkService.success = true
-        analyticsController.uploadAnalyticsIfNeeded()
-        Task {
+            await analyticsController.uploadAnalyticsIfNeeded()
             let eventsList = await analyticsController.getListOfAllEvents()
             XCTAssert(eventsList.count == 0)
-        }
     }
 }
